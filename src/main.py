@@ -7,7 +7,7 @@ from src.locator.utils import EndOfMessage
 from src.locator.writer import FileWriter
 
 BRANCH = "master"  # default GitLab project branch
-SQL_REGEX = r"\"(select|call|update|delete|insert){1} (\s|\S|\n)*\";"
+SQL_REGEX = r"\"(select|call|update|delete|insert|nvl){1} (\s|\S|\n)*\";"
 
 """
 Script Entry Point

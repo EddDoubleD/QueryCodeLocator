@@ -97,11 +97,11 @@ class SQLJavaProcessorConsumer(threading.Thread):
                     print(f'Принято сообщение о завершении записи\n'
                           f'Читатель java consumer-{self.uuid}, осталось попыток {self.attempts}\n'
                           f'В очереди {self.pipeline.qsize()}')
+                    self.pipeline.put(FINISH)  # pushing further
                     if self.attempts > 0:
                         self.attempts -= 1
                     else:
                         break
-                    self.pipeline.put(FINISH)  # pushing further
                 try:
                     fileB64 = self.project.repository_blob(file['id'])
                     textFile = base64.b64decode(fileB64['content']).decode()
@@ -111,7 +111,7 @@ class SQLJavaProcessorConsumer(threading.Thread):
                 except Exception as ex:
                     print(f'{ex}')
 
-        self.out.put(FINISH)
+        self.out.put('finish')
         print(f'consumer-{self.uuid} завершает свою работу')
 
 
@@ -165,11 +165,11 @@ class SQLXMLProcessorConsumer(threading.Thread):
                     print(f'Принято сообщение о завершении записи\n'
                           f'Читатель xml consumer-{self.uuid}, осталось попыток {self.attempts}\n'
                           f'В очереди {self.pipeline.qsize()}')
+                    self.pipeline.put(FINISH)  # pushing further
                     if self.attempts > 0:
                         self.attempts -= 1
                     else:
                         break
-                    self.pipeline.put(FINISH)  # pushing further
                 fileB64 = self.project.repository_blob(file['id'])
                 textFile = base64.b64decode(fileB64['content']).decode()
                 path = file['path']
@@ -180,7 +180,7 @@ class SQLXMLProcessorConsumer(threading.Thread):
                 except Exception as ex:
                     print(f'an error {ex} was encountered while parsing the file {path}')
 
-        self.out.put(FINISH)
+        self.out.put('finish')
         print(f'consumer-{self.uuid} завершает свою работу')
 
 

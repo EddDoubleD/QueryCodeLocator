@@ -1,8 +1,6 @@
+import csv
 import queue
 import threading
-import csv
-
-from src.locator.processors import FINISH
 
 
 class FileWriter(threading.Thread):
@@ -26,10 +24,10 @@ class FileWriter(threading.Thread):
             fields = ['path', 'sql', 'id', 'description']
             writer = csv.DictWriter(file, fieldnames=fields)
             writer.writeheader()
-            while value != FINISH:
+            while value != 'finish' and self.attempts >= 0:
                 while not self.pipeline.empty():
                     value = self.pipeline.get()
-                    if value == FINISH:
+                    if value == 'finish':
                         self.attempts -= 1
                         print(f'Получено сообщение о завершении, осталось попыток {self.attempts}'
                               f' Сообщений в очереди {self.pipeline.qsize()}')
