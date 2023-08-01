@@ -1,0 +1,10 @@
+certifi==2023.7.22
+charset-normalizer==3.2.0
+dictionary==1.0
+et==0.0.2
+idna==3.4
+lxml==4.9.3
+python-gitlab==3.15.0
+requests==2.31.0
+requests-toolbelt==1.0.0
+urllib3==2.0.4
