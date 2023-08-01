@@ -1,4 +1,6 @@
 # Query Code Locator
+![GitHub Pipenv locked Python version](https://img.shields.io/github/pipenv/locked/python-version/EddDoubleD/QueryCodeLocator)
+![GitHub Pipenv locked dependency version](https://img.shields.io/github/pipenv/locked/dependency-version/EddDoubleD/QueryCodeLocator/python-gitlab) <br/>
 This script extracts SQL-code from various repository files <br/>
 In this version, the script is configured to search for scripts in java files and xml files of a certain format
 
