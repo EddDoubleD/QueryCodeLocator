@@ -4,6 +4,8 @@ In this version, the script is configured to search for scripts in java files an
 
 ## How it works ?
 
+![Drawing on a napkin](https://github.com/EddDoubleD/QueryCodeLocator/assets/29662093/1963b444-e1e3-4f24-a26c-dfb7197ceeb4)
+
 - Connectors - connects to the git project (gitlab/github), creates wrappers for API interaction
 - Producers - crawls the width of the repository and collects all the necessary files
 - Consumers - searches for sql code (or any other code) in found files
