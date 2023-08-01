@@ -1,0 +1,6 @@
+{
+  "branch": "master",
+  "sql_regex": "\"(select|call|update|delete|insert|nvl){1}.*\";",
+  "java_mask": "\\.java$",
+  "xml_mask": "\\.(lc|check|action)$"
+}
