@@ -5,6 +5,7 @@ from src.connection.gitlab_conn import Connector
 from src.locator.processors import FileProducer, SQLJavaProcessorConsumer, SQLXMLProcessorConsumer
 from src.locator.utils import EndOfMessage
 from src.locator.writer import FileWriter
+from src.resource.settings import Settings
 
 BRANCH = "master"  # default GitLab project branch
 SQL_REGEX = r"\"(select|call|update|delete|insert|nvl){1} (\s|\S|\n)*\";"
@@ -15,6 +16,8 @@ Script Entry Point
 @:arg ACCESS_TOKEN project secret 
 """
 if __name__ == '__main__':
+    setting = Settings('src/resource/settings.json')
+    setting.parse()
     if argv.__len__() < 3:
         print("not enough parameters")
         exit(1)
